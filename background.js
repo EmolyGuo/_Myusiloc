@@ -8,7 +8,7 @@ const GOAL = 3;
 const defaults = {
   correctPlays: 0,
   lastResetDate: "",
-  blockedSites: ["instagram.com", "tiktok.com", ]
+  blockedSites: ["instagram.com", "tiktok.com", "netflix.com", "youtube.com", "twitch.com", "crunchyroll.com"]
 };
 
 // ---------- Check if a web address belongs to a blocked site ----------
