@@ -8,7 +8,7 @@ const GOAL = 3;
 const defaults = {
   correctPlays: 0,
   lastResetDate: "",
-  blockedSites: ["instagram.com", "tiktok.com", "netflix.com", "youtube.com", "twitch.tv", "crunchyroll.com"]
+  blockedSites: ["instagram.com", "tiktok.com", "netflix.com", "youtube.com", "twitch.com", "crunchyroll.com" ]
 };
 
 // ---------- Check if a web address belongs to a blocked site ----------
@@ -61,6 +61,7 @@ chrome.webNavigation.onBeforeNavigate.addListener(function (details) {
 
   loadToday(function (data) {
     const unlocked = data.correctPlays >= GOAL;
+    console.log("checking:", details.url, "| sites:", data.blockedSites, "| plays:", data.correctPlays);
 
     if (!unlocked && isBlockedSite(details.url, data.blockedSites)) {
       // Send this tab to our blocked page instead.
