@@ -1,0 +1,132 @@
+/* ---------- Colours ----------
+   These work like constants in C++ or Java.
+   Define them once here, then use them anywhere with var(--name).
+   To change the whole look, only edit this list. */
+:root {
+  --main: #a62828;        /* deep red: buttons, headings, XP bar */
+  --main-dark: #861f1f;   /* darker red: used when hovering buttons */
+  --background: #fff8f0;  /* warm cream page background */
+  --text: #2d2a32;        /* dark grey text */
+  --correct: #2e9e5b;     /* green: unlocked / correct */
+  --wrong: #e8751a;       /* orange: locked / wrong */
+  --light-grey: #eadfdf;  /* empty part of the XP bar */
+}
+
+/* ---------- Page basics ---------- */
+body {
+  width: 320px;           /* popup width */
+  margin: 0;              /* remove the default gap around the page */
+  padding: 16px;          /* space inside the edges (2 x 8px) */
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin: 0 0 4px 0;      /* top right bottom left */
+  font-size: 22px;
+  color: var(--main);
+}
+
+.tagline {
+  margin: 0 0 16px 0;
+  font-size: 13px;
+}
+
+/* ---------- Status card ---------- */
+.status-card {
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;     /* rounded corners */
+  border-left: 6px solid; /* thick coloured stripe on the left */
+  background: white;
+}
+
+.status-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.status-detail {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+}
+
+/* The stripe and title colour depend on which class the card has. */
+.status-card.locked {
+  border-left-color: var(--wrong);
+}
+.status-card.locked .status-title {
+  color: var(--wrong);
+}
+
+.status-card.unlocked {
+  border-left-color: var(--correct);
+}
+.status-card.unlocked .status-title {
+  color: var(--correct);
+}
+
+/* ---------- Level and XP bar ---------- */
+.level-section {
+  margin-bottom: 16px;
+}
+
+.level-label {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* The bar is a grey box with a purple box inside it.
+   Changing the width of the purple box (in HTML or later with JavaScript)
+   makes the bar look more or less full. */
+.xp-bar {
+  height: 12px;
+  background: var(--light-grey);
+  border-radius: 6px;
+  overflow: hidden;       /* keeps the purple inside the rounded corners */
+}
+
+.xp-fill {
+  height: 100%;
+  background: var(--main);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: block;         /* each button takes a full row */
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;        /* hand cursor when hovering */
+}
+
+.btn-primary {
+  background: var(--main);
+  color: white;
+  border: none;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--main);
+  border: 2px solid var(--main);
+}
+
+/* Hover = when the mouse is over the button. */
+.btn-primary:hover {
+    background: var(--main-dark);
+}
+.btn-secondary:hover {
+  background: var(--light-grey);
+}
+
+/* Disabled = a button that can't be clicked yet. We'll use this later. */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,70 @@
+/* Same colour list as the popup, so the two pages match. */
+:root {
+  --main: #a62828;        /* deep red: buttons, headings, XP bar */
+  --main-dark: #861f1f;   /* darker red: used when hovering buttons */
+  --background: #fff8f0;  /* warm cream page background */
+  --text: #2d2a32;        /* dark grey text */
+  --correct: #2e9e5b;     /* green: unlocked / correct */
+  --wrong: #e8751a;       /* orange: locked / wrong */
+  --light-grey: #eadfdf;  /* empty part of the XP bar */
+}
+
+/* This page fills a whole browser tab, so we centre one card in the middle.
+   "display: flex" plus the two "center" lines is the usual trick for that. */
+body {
+  margin: 0;
+  min-height: 100vh;          /* 100vh = the full height of the window */
+  display: flex;
+  justify-content: center;    /* centre left-to-right */
+  align-items: center;        /* centre top-to-bottom */
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  width: 400px;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);  /* soft shadow under the card */
+}
+
+h1 {
+  margin: 0 0 24px 0;
+  font-size: 32px;
+  color: var(--main);
+}
+
+.big-number {
+  margin: 0;
+  font-size: 72px;
+  font-weight: bold;
+  color: var(--wrong);        /* red while locked */
+}
+
+.message {
+  margin: 0 0 32px 0;
+  font-size: 18px;
+}
+
+/* The page switches to this look when the user is already unlocked. */
+.big-number.unlocked {
+  color: var(--correct);
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--main-dark);
+}

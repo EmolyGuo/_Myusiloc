@@ -1,0 +1,220 @@
+:root {
+    --main: #a62828;        /* deep red: buttons, headings, XP bar */
+    --main-dark: #861f1f;   /* darker red: used when hovering buttons */
+    --background: #fff8f0;  /* warm cream page background */
+    --text: #2d2a32;        /* dark grey text */
+    --correct: #2e9e5b;     /* green: unlocked / correct */
+    --wrong: #e8751a;       /* orange: locked / wrong */
+    --light-grey: #eadfdf;  /* empty part of the XP bar */
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+/* Wider than before so sheet music has room. */
+.card {
+    width: 640px;
+    margin: 24px 0;
+    padding: 32px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0 0 24px 0;
+    font-size: 28px;
+    text-align: center;
+    color: var(--main);
+}
+
+/* Anything with this class is invisible. JavaScript adds and removes it. */
+.hidden {
+    display: none;
+}
+
+/* ---------- Level and XP bar (copied from style.css) ---------- */
+.level-section {
+    margin-bottom: 16px;
+    }
+
+.level-label {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.xp-bar {
+    height: 12px;
+    background: var(--light-grey);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    background: var(--main);
+}
+
+/* Green banner for level-ups */
+.level-up {
+    margin: 0 0 16px 0;
+    padding: 8px;
+    background: var(--correct);
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ---------- Song box ---------- */
+.song-box {
+    padding: 16px;
+    margin-bottom: 16px;
+    background: var(--background);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.song-title {
+    margin: 0 0 4px 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--main);
+}
+
+.song-details {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ---------- Sheet music ---------- */
+.sheet-box {
+    margin-bottom: 16px;
+    padding: 8px;
+    border: 2px solid var(--light-grey);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.sheet-image {
+    max-width: 100%;       /* never wider than the box */
+}
+
+.sheet-placeholder {
+    margin: 48px 0;
+    font-size: 14px;
+    color: grey;
+}
+
+/* ---------- Listening indicator ---------- */
+.listening {
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    background: var(--wrong);
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* ---------- Feedback and counter ---------- */
+.feedback {
+    min-height: 24px;
+    margin: 0 0 16px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.feedback.good {
+    color: var(--correct);
+}
+
+.feedback.bad {
+    color: var(--wrong);
+}
+
+.counter {
+    margin: 0 0 16px 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+.action-row {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-main {
+    background: var(--main);
+}
+.btn-main:hover {
+    background: var(--main-dark);
+}
+
+.btn-correct {
+    background: var(--correct);
+}
+
+.btn-wrong {
+    background: var(--wrong);
+}
+
+/* ---------- Temporary test box ---------- */
+.test-box {
+    padding-top: 16px;
+    border-top: 2px dashed var(--light-grey);
+    text-align: center;
+}
+
+.test-label {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: grey;
+}
+.action-row .btn { margin: 0 4px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Live microphone meter ---------- */
+.mic-box { margin-bottom: 16px; padding: 12px; border-radius: 8px; background: var(--background); }
+.mic-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 14px; }
+.mic-note { font-size: 24px; font-weight: bold; color: var(--main); min-width: 56px; text-align: right; }
+.mic-bar { position: relative; height: 14px; background: var(--light-grey); border-radius: 7px; overflow: hidden; }
+.mic-fill { height: 100%; width: 0%; background: var(--wrong); border-radius: 7px; transition: width 0.06s linear; }
+.mic-fill.loud { background: var(--correct); }
+.mic-threshold { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--text); opacity: 0.6; }
+.mic-hint { margin: 8px 0 0 0; font-size: 13px; color: var(--wrong); text-align: center; }
+
+.btn-reset { background: var(--text); }
+.btn-reset:hover { background: black; }

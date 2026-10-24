@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Practice</title>
+    <link rel="stylesheet" href="practice.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Practice time</h1>
+
+      <!-- Player level and XP bar (same look as the popup) -->
+      <div class="level-section">
+        <p class="level-label" id="level-label">Level 1</p>
+        <div class="xp-bar">
+          <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Shown briefly when the level goes up -->
+      <p class="level-up hidden" id="level-up">Level up!</p>
+
+      <!-- The song to play -->
+      <div class="song-box">
+        <p class="song-title" id="song-title">Loading song...</p>
+        <p class="song-details" id="song-details"></p>
+      </div>
+
+      <!-- Sheet music: an image if the song has one, otherwise a placeholder -->
+      <div class="sheet-box">
+        <img class="sheet-image hidden" id="sheet-image" alt="Sheet music" />
+        <p class="sheet-placeholder" id="sheet-placeholder">Sheet music will appear here</p>
+      </div>
+
+      <!-- Shown while the app is listening -->
+      <div class="listening hidden" id="listening">
+        <span class="dot"></span> Listening...
+      </div>
+
+      <!-- Live microphone meter: moves when the laptop hears sound -->
+      <div class="mic-box hidden" id="mic-box">
+        <div class="mic-top">
+          <span class="mic-label" id="mic-label">Microphone: waiting for sound...</span>
+          <span class="mic-note" id="mic-note">--</span>
+        </div>
+        <div class="mic-bar">
+          <div class="mic-fill" id="mic-fill"></div>
+          <div class="mic-threshold" id="mic-threshold" title="Sound must reach this line to count"></div>
+        </div>
+        <p class="mic-hint hidden" id="mic-hint">No sound heard. Check your microphone or Chrome's input device, and play a bit louder.</p>
+      </div>
+
+      <p class="feedback" id="feedback"></p>
+      <p class="counter" id="counter">0 of 3 correct plays</p>
+
+      <div class="action-row">
+        <button class="btn btn-main" id="start-button">Start playing</button>
+        <button class="btn btn-main" id="song-button">New song</button>
+      </div>
+
+      <!-- Temporary buttons so you can test without the detector. Delete this box later. -->
+      <div class="test-box">
+        <p class="test-label">Testing only (remove later)</p>
+        <button class="btn btn-correct" id="fake-correct">Fake correct</button>
+        <button class="btn btn-wrong" id="fake-wrong">Fake wrong</button>
+        <button class="btn btn-reset" id="reset-button">Reset progress</button>
+      </div>
+    </div>
+
+    <script src="songs.js"></script>
+    <script src="sheet.js"></script>
+    <script src="detector.js"></script>
+    <script src="practice.js"></script>
+  </body>
+</html>

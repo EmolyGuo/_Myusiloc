@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Chiika Loompas",
+  "version": "1.0",
+  "description": "Practice your instrument to earn your scrolling time.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "webNavigation", "alarms"]
+}

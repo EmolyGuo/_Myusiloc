@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chiika Loompas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Chiika Loompas</h1>
+    <p class="tagline">Practice first. Scroll later.</p>
+
+    <!-- The ids (like id="status-card") let popup.js find these elements. -->
+    <div class="status-card locked" id="status-card">
+      <p class="status-title" id="status-title">Locked</p>
+      <p class="status-detail" id="status-detail">0 of 3 correct plays today</p>
+    </div>
+
+    <div class="level-section">
+      <p class="level-label" id="level-label">Level 1</p>
+      <div class="xp-bar">
+        <div class="xp-fill" id="xp-fill" style="width: 40%"></div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="start-button">Start practicing</button>
+    <button class="btn btn-secondary" id="reset-button">Reset (demo)</button>
+
+    <!-- Keep this at the bottom so the page exists before the script runs. -->
+    <script src="songs.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
