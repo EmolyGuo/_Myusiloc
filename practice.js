@@ -39,7 +39,7 @@ const grannyOverlay = document.getElementById("granny-overlay");
 const grannyImage = document.getElementById("granny-image");
 
 // NEW: the two pictures. One is picked at random each time.
-const GRANNY_IMAGES = ["images/granny1.jpg", "images/granny2.jpg"];
+const GRANNY_IMAGES = ["granny1.jpg", "granny2.jpg"];
 
 // These are loaded from storage below.
 let correctPlays = 0;
