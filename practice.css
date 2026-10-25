@@ -218,3 +218,27 @@ h1 {
 
 .btn-reset { background: var(--text); }
 .btn-reset:hover { background: black; }
+
+/* ---------- Pop-up for failed attempts ---------- */
+.granny-overlay {
+  position: fixed;               /* sticks to the window, over everything else */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);   /* dark see-through backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;                 /* make sure it's on top */
+}
+
+/* This line is needed so the "hidden" class still works on the overlay. */
+.granny-overlay.hidden {
+  display: none;
+}
+
+.granny-image {
+  max-width: 90%;
+  max-height: 90%;
+}
