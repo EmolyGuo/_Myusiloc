@@ -34,6 +34,13 @@ const fakeCorrect = document.getElementById("fake-correct");
 const fakeWrong = document.getElementById("fake-wrong");
 const resetButton = document.getElementById("reset-button");
 
+// NEW: pop-up for failed attempts
+const grannyOverlay = document.getElementById("granny-overlay");
+const grannyImage = document.getElementById("granny-image");
+
+// NEW: the two pictures. One is picked at random each time.
+const GRANNY_IMAGES = ["images/granny1.jpg", "images/granny2.jpg"];
+
 // These are loaded from storage below.
 let correctPlays = 0;
 let currentLevel = 1;
@@ -173,6 +180,18 @@ function handleResult(passed) {
   }
 }
 
+// NEW: ---------- Pop-up for failed attempts ----------
+function showGranny() {
+  const pick = Math.floor(Math.random() * GRANNY_IMAGES.length);   // 0 or 1
+  grannyImage.src = GRANNY_IMAGES[pick];
+  grannyOverlay.classList.remove("hidden");   // show it
+
+  // After 2000 milliseconds (2 seconds), hide it again.
+  setTimeout(function () {
+    grannyOverlay.classList.add("hidden");
+  }, 2000);
+}
+
 // ---------- Listening to the player ----------
 async function startPlaying() {
   if (playing || !currentSong) return;
@@ -224,6 +243,7 @@ async function startPlaying() {
   handleResult(result.passed);
   startButton.textContent = result.passed ? "Play again" : "Try again";
   if (!result.passed) {
+    showGranny();   // NEW
     showFeedback("You suck! Try again. (" + got + " accuracy, you need " + need + ")", "bad");
   }
 }
@@ -236,7 +256,10 @@ fakeCorrect.addEventListener("click", function () {
   saveProgress(leveledUp);
   handleResult(true);
 });
-fakeWrong.addEventListener("click", function () { handleResult(false); });
+fakeWrong.addEventListener("click", function () {
+  handleResult(false);
+  showGranny();   // NEW
+});
 
 // DEMO ONLY: wipes today's plays, EXP and level so you can start over.
 if (resetButton) resetButton.addEventListener("click", function () {
